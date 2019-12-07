@@ -10,11 +10,12 @@ The wires twist and turn, but the two wires occasionally cross paths. To fix the
 
 For example, if the first wire's path is R8,U5,L5,D3, then starting from the central port (o), it goes right 8, up 5, left 5, and finally down 3:
 
-Example1
+<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day3/example1.png?token=AB7KT6BLJL45BRUVM2EJQUS56UFS2" width="150" height="200" />
 
 Then, if the second wire's path is U7,R6,D4,L4, it goes up 7, right 6, down 4, and left 4:
 
-Example2
+<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day3/example2.png?token=AB7KT6H5MMB67XHQOK2HOWS56UFW4" width="150" height="200" />
+
 
 These wires cross at two locations (marked X), but the lower-left one is closer to the central port: its distance is 3 + 3 = 6.
 
