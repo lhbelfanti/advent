@@ -1,4 +1,4 @@
-def runProgram(data, i):
+def run_program(data, i):
     if i >= len(data) or data[i] == 99:
         return data
 
@@ -12,10 +12,10 @@ def runProgram(data, i):
         if num == 2:
             data[pos3] = num1 * num2
 
-    return runProgram(data, i + 4)
+    return run_program(data, i + 4)
 
 
-def newProgram(noun, verb):
+def new_program(noun, verb):
     f = open("input.txt", "r")
 
     data = []
@@ -27,15 +27,17 @@ def newProgram(noun, verb):
 
     data[1] = noun
     data[2] = verb
-    data = runProgram(data, 0)
+    data = run_program(data, 0)
     return data[0]
 
 
-duplicated = []
-value = 0
-for i in range(100):
-    for j in range(100):
-        value = newProgram(i, j)
-        if value == 19690720:
-            print("The noun is: " + str(i) + " and the verb is: " + str(j))
-            print("The answer is: " + str((100 * i) + j))
+def main():
+    for i in range(100):
+        for j in range(100):
+            value = new_program(i, j)
+            if value == 19690720:
+                print("The noun is: " + str(i) + " and the verb is: " + str(j))
+                print("The answer is: " + str((100 * i) + j))
+
+
+main()

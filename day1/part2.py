@@ -1,16 +1,18 @@
-def calculateFuel(f, t):
-    pf = (int(f) // 3) - 2
+def calculate_fuel(fuel, t):
+    pf = (int(fuel) // 3) - 2
     if pf <= 0:
         return t
-    return calculateFuel(pf, t + pf)
+    return calculate_fuel(pf, t + pf)
 
 
-f = open("input.txt", "r")
+def main():
+    f = open("input.txt", "r")
 
-total = 0
-for line in f:
-    total += calculateFuel(int(line), 0)
+    total = 0
+    for line in f:
+        total += calculate_fuel(int(line), 0)
 
-print("Total: " + str(total))
+    print("Total: " + str(total))
 
 
+main()
