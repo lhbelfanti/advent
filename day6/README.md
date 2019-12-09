@@ -6,7 +6,8 @@ You've landed at the Universal Orbit Map facility on Mercury. Because navigation
 
 Except for the universal Center of Mass (COM), every object in space is in orbit around exactly one other object. An orbit looks roughly like this:
 
-Example1
+<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day6/example1.png?token=AB7KT6GZD3D62YB46IWT5XS57AD2Y" width="300" height="200" />
+
 
 In this diagram, the object BBB is in orbit around AAA. The path that BBB takes around AAA (drawn with lines) is only partly shown. In the map data, this orbital relationship is written AAA)BBB, which means "BBB is in orbit around AAA".
 
@@ -26,11 +27,11 @@ G)H
 D)I
 E)J
 J)K
-K)L
+K)L  
 
 Visually, the above map of orbits looks like this:
 
-Example 2
+<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day6/example2.png?token=AB7KT6FNQS7IY4MSL6TA2AS57AD3C" width="400" height="150" />
 
 In this visual representation, when two objects are connected by a line, the one on the right directly orbits the one on the left.
 
