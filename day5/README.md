@@ -89,5 +89,5 @@ This time, when the TEST diagnostic program runs its input instruction to get th
 What is the diagnostic code for system ID 5?
 
 ```
-The answer is ?.
+The answer is 2369720.
 ```
