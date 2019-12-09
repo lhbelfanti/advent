@@ -1,4 +1,5 @@
---- Day 5: Sunny with a Chance of Asteroids ---
+## --- Day 5: Sunny with a Chance of Asteroids ---
+
 You're starting to sweat as the ship makes its way toward Mercury. The Elves suggest that you get the air conditioner working by upgrading your ship computer to support the Thermal Environment Supervision Terminal.
 
 The Thermal Environment Supervision Terminal (TEST) starts by running a diagnostic program (your puzzle input). The TEST diagnostic program will run on your existing Intcode computer after a few modifications:
@@ -21,7 +22,8 @@ For example, consider the program 1002,4,3,4,33.
 
 The first instruction, 1002,4,3,4, is a multiply instruction - the rightmost two digits of the first value, 02, indicate opcode 2, multiplication. Then, going right to left, the parameter modes are 0 (hundreds digit), 1 (thousands digit), and 0 (ten-thousands digit, not present and therefore zero):
 
-Example 1
+<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day5/example1.png?token=AB7KT6G6QEL7YMVFH2RV4SC563H6I" width="800" height="200" />
+
 
 This instruction multiplies its first two parameters. The first parameter, 4 in position mode, works like it did before - its value is the value stored at address 4 (33). The second parameter, 3 in immediate mode, simply has value 3. The result of this operation, 33 * 3 = 99, is written according to the third parameter, 4 in position mode, which also works like it did before - 99 is written to address 4.
 
