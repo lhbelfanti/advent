@@ -73,7 +73,7 @@ I)SAN
 
 Visually, the above map of orbits looks like this:
 
-Example 1
+<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day6/example3.png?token=AB7KT6E64IHRH572BQ2USFC57BEJS" width="400" height="180" />
 
 In this example, YOU are in orbit around K, and SAN is in orbit around I. To move from K to I, a minimum of 4 orbital transfers are required:
 
@@ -84,7 +84,7 @@ D to I
 
 Afterward, the map of orbits looks like this:
 
-Example 2
+<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day6/example4.png?token=AB7KT6BN3KU52UNCZXVXPIC57BEJ4" width="400" height="180" />
 
 What is the minimum number of orbital transfers required to move from the object YOU are orbiting to the object SAN is orbiting? (Between the objects they are orbiting - not between YOU and SAN.)
 
