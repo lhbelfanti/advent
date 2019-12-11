@@ -6,8 +6,15 @@ You've landed at the Universal Orbit Map facility on Mercury. Because navigation
 
 Except for the universal Center of Mass (COM), every object in space is in orbit around exactly one other object. An orbit looks roughly like this:
 
-<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day6/example1.png?token=AB7KT6GZD3D62YB46IWT5XS57AD2Y" width="300" height="200" />
-
+                      \
+                       \
+                        |
+                        |
+    AAA--> o            o <--BBB
+                        |
+                        |
+                       /
+                      /
 
 In this diagram, the object BBB is in orbit around AAA. The path that BBB takes around AAA (drawn with lines) is only partly shown. In the map data, this orbital relationship is written AAA)BBB, which means "BBB is in orbit around AAA".
 
@@ -17,22 +24,25 @@ Whenever A orbits B and B orbits C, then A indirectly orbits C. This chain can b
 
 For example, suppose you have the following map:
 
-COM)B
-B)C
-C)D
-D)E
-E)F
-B)G
-G)H
-D)I
-E)J
-J)K
-K)L
+    COM)B
+    B)C
+    C)D
+    D)E
+    E)F
+    B)G
+    G)H
+    D)I
+    E)J
+    J)K
+    K)L
 
 Visually, the above map of orbits looks like this:
 
-<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day6/example2.png?token=AB7KT6FNQS7IY4MSL6TA2AS57AD3C" width="400" height="150" />
-
+            G - H       J - K - L
+           /           /
+    COM - B - C - D - E - F
+                   \
+                    I
 In this visual representation, when two objects are connected by a line, the one on the right directly orbits the one on the left.
 
 Here, we can count the total number of orbits as follows:
@@ -57,37 +67,47 @@ You start at the object YOU are orbiting; your destination is the object SAN is 
 
 For example, suppose you have the following map:
 
-COM)B
-B)C
-C)D
-D)E
-E)F
-B)G
-G)H
-D)I
-E)J
-J)K
-K)L
-K)YOU
-I)SAN
+    COM)B
+    B)C
+    C)D
+    D)E
+    E)F
+    B)G
+    G)H
+    D)I
+    E)J
+    J)K
+    K)L
+    K)YOU
+    I)SAN
 
 Visually, the above map of orbits looks like this:
 
-<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day6/example3.png?token=AB7KT6E64IHRH572BQ2USFC57BEJS" width="400" height="180" />
-
+                               *YOU*
+                               /
+            G - H         *J* - *K* - L
+           /              /
+    COM - B - C - *D* - *E* - F
+                   \
+                    *I* - *SAN*
 In this example, YOU are in orbit around K, and SAN is in orbit around I. To move from K to I, a minimum of 4 orbital transfers are required:
 
-K to J
-J to E
-E to D
-D to I
+- K to J
+- J to E
+- E to D
+- D to I
 
 Afterward, the map of orbits looks like this:
 
-<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day6/example4.png?token=AB7KT6BN3KU52UNCZXVXPIC57BEJ4" width="400" height="180" />
-
+            G - H       J - K - L
+           /           /
+    COM - B - C - D - E - F
+                   \
+                    I - SAN
+                     \
+                      YOU
 What is the minimum number of orbital transfers required to move from the object YOU are orbiting to the object SAN is orbiting? (Between the objects they are orbiting - not between YOU and SAN.)
 
 ```
-The answer is ?.
+The answer is 433.
 ```
