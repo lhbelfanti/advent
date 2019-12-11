@@ -83,8 +83,8 @@ For example, suppose you have the following map:
 
 Visually, the above map of orbits looks like this:
 
-                               *YOU*
-                               /
+                                 *YOU*
+                                  /
             G - H         *J* - *K* - L
            /              /
     COM - B - C - *D* - *E* - F

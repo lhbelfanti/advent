@@ -24,8 +24,14 @@ For example, consider the program 1002,4,3,4,33.
 
 The first instruction, 1002,4,3,4, is a multiply instruction - the rightmost two digits of the first value, 02, indicate opcode 2, multiplication. Then, going right to left, the parameter modes are 0 (hundreds digit), 1 (thousands digit), and 0 (ten-thousands digit, not present and therefore zero):
 
-<img src="https://raw.githubusercontent.com/lhbelfanti/adventure-of-code-2019/master/day5/example1.png?token=AB7KT6G6QEL7YMVFH2RV4SC563H6I" width="800" height="200" />
+    ABCDE
+     1002
 
+    DE - two-digit opcode,      02 == opcode 2
+     C - mode of 1st parameter,  0 == position mode
+     B - mode of 2nd parameter,  1 == immediate mode
+     A - mode of 3rd parameter,  0 == position mode,
+                                      omitted due to being a leading zero
 
 This instruction multiplies its first two parameters. The first parameter, 4 in position mode, works like it did before - its value is the value stored at address 4 (33). The second parameter, 3 in immediate mode, simply has value 3. The result of this operation, 33 * 3 = 99, is written according to the third parameter, 4 in position mode, which also works like it did before - 99 is written to address 4.
 
@@ -34,7 +40,7 @@ Parameters that an instruction writes to will never be in immediate mode.
 Finally, some notes:
 
 - It is important to remember that the instruction pointer should increase by the number of values in the instruction after the instruction finishes. Because of the new instructions, this amount is no longer always 4.
-- Integers can be negative: 1101,100,-1,4,0 is a valid program (find 100 + -1, store the result in position 4).  
+- Integers can be negative: 1101,100,-1,4,0 is a valid program (find 100 + -1, store the result in position 4).
 The TEST diagnostic program will start by requesting from the user the ID of the system to test by running an input instruction - provide it 1, the ID for the ship's air conditioner unit.
 
 It will then perform a series of diagnostic tests confirming that various parts of the Intcode computer, like parameter modes, function correctly. For each test, it will run an output instruction indicating how far the result of the test was from the expected value, where 0 means the test was successful. Non-zero outputs mean that a function is not working correctly; check the instructions that were run before the output instruction to see which one failed.
@@ -78,8 +84,8 @@ Here are some jump tests that take an input, then output 0 if the input was zero
 
 Here's a larger example:
 
-3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,  
-1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,  
+3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
+1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,
 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99
 
 The above example program uses an input instruction to ask for a single number. The program will then output 999 if the input value is below 8, output 1000 if the input value is equal to 8, or output 1001 if the input value is greater than 8.
