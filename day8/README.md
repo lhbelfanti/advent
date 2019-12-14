@@ -58,3 +58,7 @@ So, the final image looks like this:
 10
 
 What message is produced after decoding your image?
+
+```
+The answer is JYZHF.
+```
