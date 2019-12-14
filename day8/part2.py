@@ -1,4 +1,25 @@
-from operator import attrgetter
+def print_layer(layer, wide, tall):
+	line = ""
+	for i in range(0, tall):
+		for j in range(0, wide):
+			c = layer.matrix[i][j]
+			line += " " if c == 0 else "█"
+		print(line)
+		line = ""
+
+
+def combine_layers(layers, wide, tall):
+	combined_layer = Layer(wide, tall)
+	for i in range(0, tall):
+		for j in range(0, wide):
+			color = 2
+			for lay in layers:
+				c = lay.matrix[i][j]
+				if c != 2 and color == 2:
+					color = c
+			combined_layer.matrix[i][j] = color
+
+	return combined_layer
 
 
 def create_layers(pixels, wide, tall):
@@ -62,13 +83,8 @@ def main():
 		pixels.append(int(p))
 
 	layers = create_layers(pixels, wide, tall)
-	min_zeros = min(layers, key=attrgetter('zeros'))
-	print("The number of 1 digits multiplied by the number of 2 digits is: " + str(min_zeros.multiply()))
+	layer = combine_layers(layers, wide, tall)
+	print_layer(layer, wide, tall)
 
 
 main()
-
-# wrong
-# 1792
-# 1834
-# 3420
