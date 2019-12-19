@@ -164,5 +164,5 @@ In the large example above (the one with the best monitoring station location at
 The Elves are placing bets on which will be the 200th asteroid to be vaporized. Win the bet by determining which asteroid that will be; what do you get if you multiply its X coordinate by 100 and then add its Y coordinate? (For example, 8,2 becomes 802.)
 
 ```
-The answer is ?.
+The answer is 517.
 ```
