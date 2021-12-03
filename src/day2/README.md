@@ -1,4 +1,4 @@
-## --- Day 2: Sonar Sweep ---
+## --- Day 2: Dive! ---
 
 ### --- Part One ---
 Now, you need to figure out how to pilot this thing.
@@ -65,5 +65,5 @@ Using this new interpretation of the commands, calculate the horizontal position
 
 <details>
   	<summary>The answer is:</summary>
-
+	1960569556
 </details>
