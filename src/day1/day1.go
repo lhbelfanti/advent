@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-type Day1 struct {}
+type Day1 struct{}
 
 func (d Day1) Part1() {
 	file, err := os.Open("src/day1/input.txt")
@@ -57,10 +57,10 @@ func (d Day1) Part2() {
 	sliding := 3
 	length := len(measurements)
 	counter := 0
-	for i := range measurements{
-		if i + sliding < length {
-			prev := sum(measurements[i:i + sliding])
-			curr := sum(measurements[i + 1:i + 1 + sliding])
+	for i := range measurements {
+		if i+sliding < length {
+			prev := sum(measurements[i : i+sliding])
+			curr := sum(measurements[i+1 : i+1+sliding])
 
 			if prev < curr {
 				counter++

@@ -1,15 +1,15 @@
 package day2
 
 import (
-"bufio"
-"fmt"
-"log"
-"os"
-"strconv"
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+	"strconv"
 	"strings"
 )
 
-type Day2 struct {}
+type Day2 struct{}
 
 func (d Day2) Part1() {
 	file, err := os.Open("src/day2/input.txt")
@@ -38,7 +38,7 @@ func (d Day2) Part1() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("The answer is: %d\n", horizontalPosition * depth)
+	fmt.Printf("The answer is: %d\n", horizontalPosition*depth)
 }
 
 func (d Day2) Part2() {
@@ -69,5 +69,5 @@ func (d Day2) Part2() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("The answer is: %d\n", horizontalPosition * depth)
+	fmt.Printf("The answer is: %d\n", horizontalPosition*depth)
 }

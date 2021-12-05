@@ -5,6 +5,7 @@ import (
 	"gitlab.com/lhbelfanti/advent/src/day1"
 	"gitlab.com/lhbelfanti/advent/src/day2"
 	"gitlab.com/lhbelfanti/advent/src/day3"
+	"gitlab.com/lhbelfanti/advent/src/day4"
 )
 
 func main() {
@@ -18,9 +19,13 @@ func main() {
 	d2.Part1()
 	d2.Part2()
 
-
 	fmt.Println("Day 3")
 	var d3 day3.Day3
 	d3.Part1()
 	d3.Part2()
+
+	fmt.Println("Day 4")
+	var d4 day4.Day4
+	d4.Part1()
+	d4.Part2()
 }
