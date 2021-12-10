@@ -10,6 +10,7 @@ import (
 	"gitlab.com/lhbelfanti/advent/src/day6"
 	"gitlab.com/lhbelfanti/advent/src/day7"
 	"gitlab.com/lhbelfanti/advent/src/day8"
+	"gitlab.com/lhbelfanti/advent/src/day9"
 )
 
 func main() {
@@ -52,4 +53,9 @@ func main() {
 	var d8 day8.Day8
 	d8.Part1()
 	d8.Part2()
+
+	fmt.Println("Day 9")
+	var d9 day9.Day9
+	d9.Part1()
+	d9.Part2()
 }
