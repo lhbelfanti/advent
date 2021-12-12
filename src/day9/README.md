@@ -10,13 +10,13 @@ submarine generates a heightmap of the floor of the nearby caves for you (your p
 
 Smoke flows to the lowest point of the area it's in. For example, consider the following heightmap:
 
-```
-2 `1` 9  994  3  21 `0`
-3  9  8  789  4  92  1
-9  8 `5` 678  9  89  2
-8  7  6  789  6  78  9
-9  8  9  996 `5` 67  8
-```
+<pre>
+2<b>1</b>9994321<b>0</b>
+3987894921
+98<b>5</b>6789892
+8767896789
+989996<b>5</b>678
+</pre>
 
 Each number corresponds to the height of a particular location, where `9` is the highest and `0` is the lowest a
 location can be.
@@ -52,43 +52,43 @@ basins.
 
 The top-left basin, size `3`:
 
-```
-`2` `1` 99943210
-`3`  9  87894921
- 9   8  56789892
- 8   7  67896789
- 9   8  99965678
-```
+<pre>
+<b>21</b>99943210
+<b>3</b>987894921
+9856789892
+8767896789
+9899965678
+</pre>
 
 The top-right basin, size `9`:
 
-```
-21999 `4` `3` `2` `1` `0`
-39878  9  `4`  9  `2` `1`
-98567  8   9   8   9  `2`
-87678  9   6   7   8   9
-98999  6   5   6   7   8
-```
+<pre>
+21999<b>43210</b>
+398789<b>4</b>9<b>21</b>
+985678989<b>2</b>
+8767896789
+9899965678
+</pre>
 
 The middle basin, size `14`:
 
-```
- 2   1   9   9   9   4  3210
- 3   9  `8` `7` `8`  9  4921
- 9  `8` `5` `6` `7` `8` 9892
-`8` `7` `6` `7` `8`  9  6789
- 9  `8`  9   9   9   6  5678
-```
+<pre>
+2199943210
+39<b>878</b>94921
+9<b>85678</b>9892
+<b>87678</b>96789
+9<b>8</b>99965678
+</pre>
 
 The bottom-right basin, size `9`:
 
-```
-21999  4   3   2   1   0
-39878  9   4   9   2   1
-98567  8   9  `8`  9   2
-87678  9  `6` `7` `8`  9
-98999 `6` `5` `6` `7` `8`
-```
+<pre>
+2199943210
+3987894921
+9856789<b>8</b>92
+876789<b>678</b>9
+98999<b>65678</b>
+</pre>
 
 Find the three largest basins and multiply their sizes together. In the above example, this is `9 * 14 * 9 = 1134`.
 

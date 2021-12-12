@@ -70,28 +70,28 @@ output value (`cdfeb fcadb cdfeb cdbaf`) use five segments and are more difficul
 
 For now, focus on the easy digits. Consider this larger example:
 
-```
+<pre>
 be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb |
-`fdgacbe` cefdb cefbgd `gcbe`
+<b>fdgacbe</b> cefdb cefbgd <b>gcbe</b>
 edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec |
-fcgedb `cgb` `dgebacf` `gc`
+fcgedb <b>cgb dgebacf gc</b>
 fgaebd cg bdaec gdafb agbcfd gdcbef bgcad gfac gcb cdgabef |
-`cg` `cg` fdcagb `cbg`
+<b>cg cg</b> fdcagb <b>cbg</b>
 fbegcd cbd adcefb dageb afcb bc aefdc ecdab fgdeca fcdbega |
-efabcd cedba gadfec `cb`
+efabcd cedba gadfec <b>cb</b>
 aecbfdg fbg gf bafeg dbefa fcge gcbea fcaegb dgceab fcbdga |
-`gecf` `egdcabf` `bgf` bfgea
+<b>gecf egdcabf bgf</b> bfgea
 fgeab ca afcebg bdacfeg cfaedg gcfdb baec bfadeg bafgc acf |
-`gebdcfa` `ecba` `ca` `fadegcb`
+<b>gebdcfa ecba ca fadegcb</b>
 dbcfg fgd bdegcaf fgec aegbdf ecdfab fbedc dacgb gdcebf gf |
-`cefg` dcbef `fcge` `gbcadfe`
+<b>cefg</b> dcbef <b>fcge gbcadfe</b>
 bdfegc cbegaf gecbf dfcage bdacg ed bedf ced adcbefg gebcd |
-`ed` bcgafe cdgba cbgef
+<b>ed</b> bcgafe cdgba cbgef
 egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg |
-`gbdfcae` `bgc` `cg` `cgb`
+<b>gbdfcae bgc cg cgb</b>
 gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc |
-`fgae` cfgab `fg` bagce
-```
+<b>fgae</b> cfgab <b>fg</b> bagce
+</pre>
 
 Because the digits `1`, `4`, `7`, and 8 each use a unique number of segments, you should be able to tell which
 combinations of signals correspond to those digits. Counting only digits in the output values (the part after `|` on
