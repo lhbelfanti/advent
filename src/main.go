@@ -6,6 +6,7 @@ import (
 	"gitlab.com/lhbelfanti/advent/src/day10"
 	"gitlab.com/lhbelfanti/advent/src/day11"
 	"gitlab.com/lhbelfanti/advent/src/day12"
+	"gitlab.com/lhbelfanti/advent/src/day13"
 	"gitlab.com/lhbelfanti/advent/src/day2"
 	"gitlab.com/lhbelfanti/advent/src/day3"
 	"gitlab.com/lhbelfanti/advent/src/day4"
@@ -76,4 +77,9 @@ func main() {
 	var d12 day12.Day12
 	d12.Part1()
 	d12.Part2()
+
+	fmt.Println("Day 13")
+	var d13 day13.Day13
+	d13.Part1()
+	d13.Part2()
 }
