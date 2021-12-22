@@ -56,7 +56,7 @@ multiply the score of the losing player by the number of times the die was rolle
 
 <details>
   	<summary>The answer is:</summary>
-
+	604998
 </details>
 
 ### --- Part Two ---
@@ -82,5 +82,5 @@ how many universes does that player win?
 
 <details>
   	<summary>The answer is:</summary>
-
+	157253621231420
 </details>
