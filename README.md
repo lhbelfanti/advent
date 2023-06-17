@@ -3,9 +3,10 @@
 </p>
 <h3 align="center">Advent</h3>
 <p align="center">Advent of Code solutions<p>
+<p align="center"><a href="https://github.com/lhbelfanti/advent/tree/2019">2019</a> | <a href="https://github.com/lhbelfanti/advent/tree/2021">2021</a><p>
 <p align="center">
     <img src="https://img.shields.io/github/languages/code-size/lhbelfanti/advent?label=Repo%20size" alt="Repo size" />
-    <img src="https://img.shields.io/github/license/lhbelfanti/advent?label=License" alt="npm" />
+    <img src="https://img.shields.io/github/license/lhbelfanti/advent?label=License" alt="License" />
 </p>
 
 ---
@@ -15,7 +16,9 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 [Link](https://adventofcode.com/)
 
-This repository contains 1 branch for each year I participated in this challenge.
+This repository contains one branch for each year I participated in this challenge.
+
+<p align="center"><a href="https://github.com/lhbelfanti/advent/tree/2019">2019</a> | <a href="https://github.com/lhbelfanti/advent/tree/2021">2021</a><p>
 
 ---
 ## License
