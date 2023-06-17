@@ -6,7 +6,7 @@
 <p align="center"><a href="https://github.com/lhbelfanti/advent/tree/2019">2019</a> | <a href="https://github.com/lhbelfanti/advent/tree/2021">2021</a><p>
 <p align="center">
     ![GitHub repo size](https://img.shields.io/github/repo-size/lhbelfanti/advent?label=Repo%20size)
-    ![License: MIT](https://img.shields.io/github/license/lhbelfanti/advent?label=License)(https://opensource.org/licenses/MIT)
+    [![License: MIT](https://img.shields.io/github/license/lhbelfanti/advent?label=License)](https://opensource.org/licenses/MIT)
 </p>
 
 ---
