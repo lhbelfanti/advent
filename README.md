@@ -5,8 +5,8 @@
 <p align="center">Advent of Code solutions<p>
 <p align="center"><a href="https://github.com/lhbelfanti/advent/tree/2019">2019</a> | <a href="https://github.com/lhbelfanti/advent/tree/2021">2021</a><p>
 <p align="center">
-    ![GitHub repo size](https://img.shields.io/github/repo-size/lhbelfanti/advent?label=Repo%20size)
-    [![License: MIT](https://img.shields.io/github/license/lhbelfanti/advent?label=License)](https://opensource.org/licenses/MIT)
+    <img src="https://img.shields.io/github/languages/repo-size/lhbelfanti/advent?label=Repo%20size" alt="Repo size" />
+    <img src="https://img.shields.io/github/license/lhbelfanti/advent?label=License" alt="License" />
 </p>
 
 ---
