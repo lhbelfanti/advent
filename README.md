@@ -16,9 +16,8 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 [Link](https://adventofcode.com/)
 
-This repository contains one branch for each year I participated in this challenge.
-
-<p align="center"><a href="https://github.com/lhbelfanti/advent/tree/2019">2019</a> | <a href="https://github.com/lhbelfanti/advent/tree/2021">2021</a><p>
+This repository contains one branch for each year I participated in this challenge:
+<a href="https://github.com/lhbelfanti/advent/tree/2019">2019</a> | <a href="https://github.com/lhbelfanti/advent/tree/2021">2021</a>
 
 ---
 ## License
