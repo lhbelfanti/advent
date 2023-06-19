@@ -1,13 +1,13 @@
-<p align="center">
-  <img src="media/advent-logo.png" width="100" alt="Repository logo" />
-</p>
-<h3 align="center">Advent</h3>
-<p align="center">Advent of Code solutions<p>
-<p align="center"><a href="https://github.com/lhbelfanti/advent/tree/2019">2019</a> | <a href="https://github.com/lhbelfanti/advent/tree/2021">2021</a><p>
-<p align="center">
-    <img src="https://img.shields.io/github/repo-size/lhbelfanti/advent?label=Repo%20size" alt="Repo size" />
-    <img src="https://img.shields.io/github/license/lhbelfanti/advent?label=License" alt="License" />
-</p>
+<center>
+    <img src="media/advent-logo.png" width="100" alt="Repository logo" />
+    <h3>Advent</h3>
+    <p>Advent of Code solutions<p>
+    <p><a href="https://github.com/lhbelfanti/advent/tree/2019">2019</a> | <a href="https://github.com/lhbelfanti/advent/tree/2021">2021</a></p>
+    <p>
+        <img src="https://img.shields.io/github/repo-size/lhbelfanti/advent?label=Repo%20size" alt="Repo size" />
+        <img src="https://img.shields.io/github/license/lhbelfanti/advent?label=License" alt="License" />
+    </p>
+</center>
 
 ---
 # Advent of Code
