@@ -67,6 +67,26 @@ func (d Day1) Part2() {
 		list2 = append(list2, elementList2)
 	}
 
+	sort.Ints(list1)
+	sort.Ints(list2)
+
+	var sum int
+	for _, n1 := range list1 {
+		multiplier := 0
+		for _, n2 := range list2 {
+			if n2 == n1 {
+				multiplier += 1
+			}
+
+		}
+		sum += n1 * multiplier
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("The answer is: %d\n", sum)
 }
 
 func abs(x int) int {
