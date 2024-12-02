@@ -1,3 +1,3 @@
-module gitlab.com/lhbelfanti/advent
+module advent2024
 
 go 1.23

@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/lhbelfanti/advent/src/day1"
+
+	"advent2024/src/day1"
 )
 
 func main() {

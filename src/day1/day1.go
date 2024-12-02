@@ -2,8 +2,10 @@ package day1
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -30,6 +32,19 @@ func (d Day1) Part1() {
 		list2 = append(list2, elementList2)
 	}
 
+	sort.Ints(list1)
+	sort.Ints(list2)
+
+	var sum int
+	for i := range list1 {
+		sum += abs(list1[i] - list2[i])
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("The answer is: %d\n", sum)
 }
 
 func (d Day1) Part2() {
@@ -52,4 +67,11 @@ func (d Day1) Part2() {
 		list2 = append(list2, elementList2)
 	}
 
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
 }
