@@ -11,4 +11,9 @@ func main() {
 	var d1 day1.Day1
 	d1.Part1()
 	d1.Part2()
+
+	fmt.Println("Day 2")
+	var d2 day2.Day2
+	d1.Part1()
+	d1.Part2()
 }
