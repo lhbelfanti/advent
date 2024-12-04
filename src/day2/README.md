@@ -39,7 +39,7 @@
 </details>
 
 <article>
-<h3 id="part2">--- Part Two ---</h3>
+<h3>--- Part Two ---</h3>
 p>The engineers are surprised by the low number of safe reports until they realize they forgot to tell you about the <span title="I need to get one of these!">Problem Dampener</span>.</p>
 <p>The Problem Dampener is a reactor-mounted module that lets the reactor safety systems <em>tolerate a single bad level</em> in what would otherwise be a safe report. It's like the bad level never happened!</p>
 <p>Now, the same rules apply as before, except if removing a single level from an unsafe report would make it safe, the report instead counts as safe.</p>

@@ -38,7 +38,7 @@
 </details>
 
 <article>
-<h3 id="part2">--- Part Two ---</h3>
+<h3>--- Part Two ---</h3>
 
 <p>Your analysis only confirmed what everyone feared: the two lists of location IDs are indeed very different.</p>
 <p>Or are they?</p>
