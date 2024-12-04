@@ -7,18 +7,15 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	
+	"advent2024/src/reader"
 )
 
 type Day2 struct{}
 
 func (d Day2) Part1() {
-	file, err := os.Open("src/day2/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
+	file, scanner := reader.Read("src/day2/input.txt")
 	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
 
 	levels := make([][]int, 0)
 

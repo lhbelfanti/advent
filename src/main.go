@@ -1,10 +1,11 @@
 package main
 
 import (
+	"fmt"
+	
 	"advent2024/src/day1"
 	"advent2024/src/day2"
-
-	"fmt"
+	"advent2024/src/day3"
 )
 
 func main() {
@@ -17,4 +18,9 @@ func main() {
 	var d2 day2.Day2
 	d2.Part1()
 	d2.Part2()
+
+	fmt.Println("Day 3")
+	var d3 day3.Day3
+	d3.Part1()
+	d3.Part2()
 }

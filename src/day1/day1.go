@@ -1,25 +1,20 @@
 package day1
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 	"sort"
 	"strconv"
 	"strings"
+	
+	"advent2024/src/reader"
 )
 
 type Day1 struct{}
 
 func (d Day1) Part1() {
-	file, err := os.Open("src/day1/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
+	file, scanner := reader.Read("src/day1/input.txt")
 	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
 
 	list1 := make([]int, 0, 1000)
 	list2 := make([]int, 0, 1000)
@@ -48,13 +43,8 @@ func (d Day1) Part1() {
 }
 
 func (d Day1) Part2() {
-	file, err := os.Open("src/day1/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
+	file, scanner := reader.Read("src/day1/input.txt")
 	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
 
 	list1 := make([]int, 0, 1000)
 	list2 := make([]int, 0, 1000)
