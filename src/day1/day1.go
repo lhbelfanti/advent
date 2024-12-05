@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
-	
+
 	"advent2024/src/reader"
 )
 

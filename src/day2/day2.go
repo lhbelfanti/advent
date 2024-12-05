@@ -7,7 +7,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	
+
 	"advent2024/src/reader"
 )
 
