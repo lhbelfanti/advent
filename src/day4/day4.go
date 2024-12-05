@@ -70,15 +70,43 @@ func (d Day4) Part2() {
 	file, scanner := reader.Read("src/day4/input.txt")
 	defer file.Close()
 
-	for scanner.Scan() {
+	wordSearchMatrix := make([][]string, 0, 140)
 
+	for scanner.Scan() {
+		wordSearchMatrix = append(wordSearchMatrix, strings.Split(scanner.Text(), ""))
+	}
+
+	const wordToSearch string = "MAS"
+	const wordToSearchReversed string = "SAM"
+	wordToSearchLen := len(wordToSearch)
+
+	counter := 0
+
+	wordSearchMatrixLen := len(wordSearchMatrix)
+
+	wordSearchLen := wordSearchMatrixLen - (wordToSearchLen - 1)
+	for i := 0; i < wordSearchLen; i++ {
+		row := wordSearchMatrix[i]
+		rowLen := len(row) - (wordToSearchLen - 1)
+		for j := 0; j < rowLen; j++ {
+			if row[j] == "M" || row[j] == "S" {
+				// Check MAS in the shape of an X
+				firstDiagonal := row[j] + wordSearchMatrix[i+1][j+1] + wordSearchMatrix[i+2][j+2]
+				if firstDiagonal == wordToSearch || firstDiagonal == wordToSearchReversed {
+					secondDiagonal := row[j+2] + wordSearchMatrix[i+1][j+1] + wordSearchMatrix[i+2][j]
+					if secondDiagonal == wordToSearch || secondDiagonal == wordToSearchReversed {
+						counter++
+					}
+				}
+			}
+		}
 	}
 
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("The answer is: %d\n", 0)
+	fmt.Printf("The answer is: %d\n", counter)
 }
 
 func rotateWordSearchMatrix90Deg(wordSearchMatrix [][]string) [][]string {
