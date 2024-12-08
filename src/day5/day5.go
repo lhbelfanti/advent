@@ -1,6 +1,7 @@
 package day5
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"slices"
@@ -16,6 +17,42 @@ func (d Day5) Part1() {
 	file, scanner := reader.Read("src/day5/input.txt")
 	defer file.Close()
 
+	rules, updates := scan(scanner)
+
+	correctUpdates, _ := processUpdates(rules, updates)
+
+	sum := sumCorrectUpdates(correctUpdates)
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("The answer is: %d\n", sum)
+}
+
+func (d Day5) Part2() {
+	file, scanner := reader.Read("src/day5/input.txt")
+	defer file.Close()
+
+	rules, updates := scan(scanner)
+
+	_, incorrectUpdates := processUpdates(rules, updates)
+
+	ordered := false
+	for !ordered {
+		ordered = orderIncorrectUpdate(rules, &incorrectUpdates)
+	}
+
+	sum := sumCorrectUpdates(incorrectUpdates)
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("The answer is: %d\n", sum)
+}
+
+func scan(scanner *bufio.Scanner) (map[int][]int, [][]int) {
 	rules := make(map[int][]int)
 	updates := make([][]int, 0)
 
@@ -44,7 +81,12 @@ func (d Day5) Part1() {
 		}
 	}
 
+	return rules, updates
+}
+
+func processUpdates(rules map[int][]int, updates [][]int) ([][]int, [][]int) {
 	correctUpdates := make([][]int, 0)
+	incorrectUpdates := make([][]int, 0)
 	for _, update := range updates {
 		isCorrect := true
 		for i, page := range update {
@@ -73,43 +115,45 @@ func (d Day5) Part1() {
 
 		if isCorrect {
 			correctUpdates = append(correctUpdates, update)
+		} else {
+			incorrectUpdates = append(incorrectUpdates, update)
 		}
-
 	}
 
+	return correctUpdates, incorrectUpdates
+}
+
+func orderIncorrectUpdate(rules map[int][]int, incorrectUpdates *[][]int) bool {
+	for idx, update := range *incorrectUpdates {
+		for i, page := range update { // i.e. update = [61, 13, 29], i = 2, page = 29
+			rule, ok := rules[page] // i.e. [13]
+			if !ok {
+				continue
+			}
+
+			afterNumbers := update[0:i] // i.e. [61, 13]
+
+			for k, a := range afterNumbers { // i.e. k = 1
+				if slices.Contains(rule, a) { // i.e. [61, 13] contains 13 --> swap 13 and 29
+					// 13 = update[k]
+					// 29 = update[i]
+					update[i], update[k] = update[k], update[i]
+					(*incorrectUpdates)[idx] = update
+					return false
+				}
+			}
+
+		}
+	}
+
+	return true
+}
+
+func sumCorrectUpdates(correctUpdates [][]int) int {
 	var sum int
 	for _, correctUpdate := range correctUpdates {
 		sum += correctUpdate[len(correctUpdate)/2]
 	}
 
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Printf("The answer is: %d\n", sum)
-}
-
-func (d Day5) Part2() {
-	file, scanner := reader.Read("src/day5/input.txt")
-	defer file.Close()
-
-	for scanner.Scan() {
-
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Printf("The answer is: %d\n", 0)
-}
-
-func isContained(rule []int, numbers []int) bool {
-	for _, n := range numbers {
-		if !slices.Contains(rule, n) {
-			return false
-		}
-	}
-
-	return true
+	return sum
 }
