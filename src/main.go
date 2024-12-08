@@ -8,6 +8,7 @@ import (
 	"advent2024/src/day3"
 	"advent2024/src/day4"
 	"advent2024/src/day5"
+	"advent2024/src/day6"
 )
 
 func main() {
@@ -35,4 +36,9 @@ func main() {
 	var d5 day5.Day5
 	d5.Part1()
 	d5.Part2()
+
+	fmt.Println("Day 6")
+	var d6 day6.Day6
+	d6.Part1()
+	d6.Part2()
 }
