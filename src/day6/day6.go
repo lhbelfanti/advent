@@ -10,7 +10,27 @@ import (
 	"advent2024/src/reader"
 )
 
-type Day6 struct{}
+type (
+	Day6 struct{}
+
+	Point struct {
+		X, Y int
+	}
+
+	VisitedPoint map[string]int
+
+	Move struct {
+		dx, dy          int
+		changeDirection map[bool]string // true for encountering `#`
+	}
+)
+
+const (
+	Top   string = "^"
+	Right string = ">"
+	Down  string = "v"
+	Left  string = "<"
+)
 
 func (d Day6) Part1() {
 	file, scanner := reader.Read("src/day6/input.txt")
@@ -98,15 +118,126 @@ func (d Day6) Part2() {
 	file, scanner := reader.Read("src/day6/input.txt")
 	defer file.Close()
 
-	scan(scanner)
+	maze, originalGuardY, originalGuardX := scan(scanner)
 
-	var sum int
+	visitedPointsMaze := make([][]VisitedPoint, len(maze))
+	for a := range maze {
+		visitedPointsMaze[a] = make([]VisitedPoint, len(maze[a]))
+		for b := range maze[a] {
+			visitedPointsMaze[a][b] = map[string]int{Top: 0, Right: 0, Down: 0, Left: 0}
+		}
+	}
+
+	moves := map[string]Move{
+		Top:   {dx: 0, dy: -1, changeDirection: map[bool]string{true: Right, false: Top}},
+		Right: {dx: 1, dy: 0, changeDirection: map[bool]string{true: Down, false: Right}},
+		Down:  {dx: 0, dy: 1, changeDirection: map[bool]string{true: Left, false: Down}},
+		Left:  {dx: -1, dy: 0, changeDirection: map[bool]string{true: Top, false: Left}},
+	}
+
+	walkablePoints := getWalkablePoints(maze, originalGuardX, originalGuardY, moves)
+
+	var loopCount int
+	for _, walkablePoint := range walkablePoints {
+		y, x := walkablePoint.Y, walkablePoint.X
+		if y == originalGuardY && x == originalGuardX {
+			continue
+		}
+
+		maze[y][x] = "#"
+
+		resetVisitedPoints(visitedPointsMaze)
+
+		guardX, guardY := originalGuardX, originalGuardY
+
+		for {
+			move := moves[maze[guardY][guardX]]
+
+			guardNextY, guardNextX := guardY+move.dy, guardX+move.dx
+
+			if guardNextY < 0 || guardNextY >= len(maze) || guardNextX < 0 || guardNextX >= len(maze[0]) {
+				maze[guardY][guardX] = "."
+				break // Guard left the maze
+			}
+
+			if maze[guardNextY][guardNextX] == "#" {
+				maze[guardY][guardX] = move.changeDirection[true]
+			} else {
+				direction := move.changeDirection[false]
+				maze[guardNextY][guardNextX], maze[guardY][guardX] = direction, "."
+
+				visitedPointsMaze[guardY][guardX][direction]++
+				if visitedPointsMaze[guardY][guardX][direction] >= 2 {
+					//maze[y][x] = "O"
+					//printMaze(maze)
+					loopCount++
+					break
+				}
+
+				guardY, guardX = guardNextY, guardNextX
+			}
+		}
+
+		maze[y][x] = "."
+		maze[originalGuardY][originalGuardX] = "^"
+	}
 
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("The answer is: %d\n", sum)
+	fmt.Printf("The answer is: %d\n", loopCount)
+}
+
+func getWalkablePoints(maze [][]string, guardX, guardY int, moves map[string]Move) []Point {
+	originalGuardY, originalGuardX := guardY, guardX
+	walkablePoints := make([]Point, 0)
+
+	for {
+		move := moves[maze[guardY][guardX]]
+
+		point := Point{X: guardX, Y: guardY}
+		walkablePoints = append(walkablePoints, point)
+
+		nextY, nextX := guardY+move.dy, guardX+move.dx
+
+		if nextY < 0 || nextY >= len(maze) || nextX < 0 || nextX >= len(maze[0]) {
+			maze[guardY][guardX] = "."
+			break
+		}
+
+		if maze[nextY][nextX] == "#" {
+			maze[guardY][guardX] = move.changeDirection[true]
+		} else {
+			maze[nextY][nextX], maze[guardY][guardX] = move.changeDirection[false], "."
+			guardY, guardX = nextY, nextX
+		}
+	}
+
+	maze[originalGuardY][originalGuardX] = "^"
+
+	return unique(walkablePoints)
+}
+
+func unique[T comparable](elements []T) []T {
+	alreadyAdded := make(map[T]bool)
+	var result []T
+	for _, element := range elements {
+		if _, ok := alreadyAdded[element]; !ok {
+			alreadyAdded[element] = true
+			result = append(result, element)
+		}
+	}
+
+	return result
+}
+
+func resetVisitedPoints(visitedPoints [][]VisitedPoint) {
+	for i := range visitedPoints {
+		for j := range visitedPoints[i] {
+			visitedPoints[i][j] = map[string]int{Top: 0, Right: 0, Down: 0, Left: 0}
+		}
+	}
 }
 
 func scan(scanner *bufio.Scanner) ([][]string, int, int) {
@@ -142,10 +273,6 @@ func printMaze(maze [][]string) {
 // --------------------------------------------------------------------------------------------------------------------
 
 type (
-	Point struct {
-		X, Y int
-	}
-
 	Rectangle struct {
 		TopLeft      *Point
 		TopRight     *Point
