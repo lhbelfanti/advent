@@ -17,18 +17,7 @@ func (d Day2) Part1() {
 	file, scanner := reader.Read("src/day2/input.txt")
 	defer file.Close()
 
-	levels := make([][]int, 0)
-
-	n := 0
-	for scanner.Scan() {
-		elements := strings.Split(scanner.Text(), " ")
-		levels = append(levels, make([]int, 0, len(elements)))
-		for _, element := range elements {
-			intElement, _ := strconv.Atoi(element)
-			levels[n] = append(levels[n], intElement)
-		}
-		n++
-	}
+	levels := scan(scanner)
 
 	count := 0
 	for _, level := range levels {
@@ -53,18 +42,7 @@ func (d Day2) Part2() {
 
 	scanner := bufio.NewScanner(file)
 
-	levels := make([][]int, 0)
-
-	n := 0
-	for scanner.Scan() {
-		elements := strings.Split(scanner.Text(), " ")
-		levels = append(levels, make([]int, 0, len(elements)))
-		for _, element := range elements {
-			intElement, _ := strconv.Atoi(element)
-			levels[n] = append(levels[n], intElement)
-		}
-		n++
-	}
+	levels := scan(scanner)
 
 	count := 0
 	for _, level := range levels {
@@ -86,6 +64,22 @@ func (d Day2) Part2() {
 	}
 
 	fmt.Printf("The answer is: %d\n", count)
+}
+
+func scan(scanner *bufio.Scanner) [][]int {
+	levels := make([][]int, 0)
+
+	n := 0
+	for scanner.Scan() {
+		elements := strings.Split(scanner.Text(), " ")
+		levels = append(levels, make([]int, 0, len(elements)))
+		for _, element := range elements {
+			intElement, _ := strconv.Atoi(element)
+			levels[n] = append(levels[n], intElement)
+		}
+		n++
+	}
+	return levels
 }
 
 func isLevelSafe(level []int) bool {
