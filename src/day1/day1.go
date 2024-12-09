@@ -1,6 +1,7 @@
 package day1
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"sort"
@@ -16,16 +17,7 @@ func (d Day1) Part1() {
 	file, scanner := reader.Read("src/day1/input.txt")
 	defer file.Close()
 
-	list1 := make([]int, 0, 1000)
-	list2 := make([]int, 0, 1000)
-
-	for scanner.Scan() {
-		elements := strings.Split(scanner.Text(), "   ")
-		elementList1, _ := strconv.Atoi(elements[0])
-		elementList2, _ := strconv.Atoi(elements[1])
-		list1 = append(list1, elementList1)
-		list2 = append(list2, elementList2)
-	}
+	list1, list2 := scan(scanner)
 
 	sort.Ints(list1)
 	sort.Ints(list2)
@@ -46,16 +38,7 @@ func (d Day1) Part2() {
 	file, scanner := reader.Read("src/day1/input.txt")
 	defer file.Close()
 
-	list1 := make([]int, 0, 1000)
-	list2 := make([]int, 0, 1000)
-
-	for scanner.Scan() {
-		elements := strings.Split(scanner.Text(), "   ")
-		elementList1, _ := strconv.Atoi(elements[0])
-		elementList2, _ := strconv.Atoi(elements[1])
-		list1 = append(list1, elementList1)
-		list2 = append(list2, elementList2)
-	}
+	list1, list2 := scan(scanner)
 
 	sort.Ints(list1)
 	sort.Ints(list2)
@@ -77,6 +60,21 @@ func (d Day1) Part2() {
 	}
 
 	fmt.Printf("The answer is: %d\n", sum)
+}
+
+func scan(scanner *bufio.Scanner) ([]int, []int) {
+	list1 := make([]int, 0, 1000)
+	list2 := make([]int, 0, 1000)
+
+	for scanner.Scan() {
+		elements := strings.Split(scanner.Text(), "   ")
+		elementList1, _ := strconv.Atoi(elements[0])
+		elementList2, _ := strconv.Atoi(elements[1])
+		list1 = append(list1, elementList1)
+		list2 = append(list2, elementList2)
+	}
+
+	return list1, list2
 }
 
 func abs(x int) int {
