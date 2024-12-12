@@ -28,36 +28,9 @@ func (d Day7) Part1() {
 
 	ops := []string{"*", "+"}
 
-	possibilities := make(map[int][]string)
+	possibilities := retrievePossibilities(calculations, ops)
 
-	for _, c := range calculations {
-		numbers := len(c.Values) - 1
-		if _, ok := possibilities[numbers]; !ok {
-			possibilities[numbers] = make([]string, 0)
-			format := "%0" + strconv.Itoa(numbers) + "b"
-			p := pow(len(ops), numbers)
-			for i := range p {
-				binaryStr := fmt.Sprintf(fmt.Sprintf(format, i))
-				operations := strings.Replace(binaryStr, "1", ops[0], -1)
-				operations = strings.Replace(operations, "0", ops[1], -1)
-				possibilities[numbers] = append(possibilities[numbers], operations)
-			}
-		}
-
-	}
-
-	var sum int
-	for _, calculation := range calculations {
-		combinations := possibilities[len(calculation.Values)-1]
-		for _, combination := range combinations {
-			operators := strings.Split(combination, "")
-			maths := doMaths(calculation.Values, operators)
-			if maths == calculation.Result {
-				sum += calculation.Result
-				break
-			}
-		}
-	}
+	sum := sumValues(calculations, possibilities)
 
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
@@ -70,13 +43,19 @@ func (d Day7) Part2() {
 	file, scanner := reader.Read("src/day7/input.txt")
 	defer file.Close()
 
-	scan(scanner)
+	calculations := scan(scanner)
+
+	ops := []string{"*", "+", "|"} // Using '|' instead of '||' to simplify the parsing
+
+	possibilities := retrievePossibilities(calculations, ops)
+
+	sum := sumValues(calculations, possibilities)
 
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("The answer is: %d\n", 0)
+	fmt.Printf("The answer is: %d\n", sum)
 }
 
 func scan(scanner *bufio.Scanner) []Calculation {
@@ -102,6 +81,32 @@ func pow(x, y int) int {
 	return int(math.Pow(float64(x), float64(y)))
 }
 
+func retrievePossibilities(calculations []Calculation, ops []string) map[int][]string {
+	possibilities := make(map[int][]string)
+
+	for _, c := range calculations {
+		numbers := len(c.Values) - 1
+		if _, ok := possibilities[numbers]; !ok {
+			possibilities[numbers] = make([]string, 0)
+
+			p := pow(len(ops), numbers)
+			padSize := len(strconv.FormatInt(int64(p-1), len(ops)))
+			for i := range p {
+				numberInBaseX := strconv.FormatInt(int64(i), len(ops))
+				numberInBaseX = strings.Repeat("0", padSize-len(numberInBaseX)) + numberInBaseX
+
+				operations := numberInBaseX
+				for j, o := range ops {
+					operations = strings.Replace(operations, fmt.Sprintf("%d", j), o, -1)
+				}
+				possibilities[numbers] = append(possibilities[numbers], operations)
+			}
+		}
+	}
+
+	return possibilities
+}
+
 func doMaths(values []int, operators []string) int {
 	maths := values[0]
 	for i := 1; i < len(values); i++ {
@@ -110,8 +115,27 @@ func doMaths(values []int, operators []string) int {
 			maths *= values[i]
 		case "+":
 			maths += values[i]
+		case "|":
+			maths, _ = strconv.Atoi(strconv.Itoa(maths) + strconv.Itoa(values[i]))
 		}
 	}
 
 	return maths
+}
+
+func sumValues(calculations []Calculation, possibilities map[int][]string) int {
+	var sum int
+	for _, calculation := range calculations {
+		combinations := possibilities[len(calculation.Values)-1]
+		for _, combination := range combinations {
+			operators := strings.Split(combination, "")
+			maths := doMaths(calculation.Values, operators)
+			if maths == calculation.Result {
+				sum += calculation.Result
+				break
+			}
+		}
+	}
+
+	return sum
 }
