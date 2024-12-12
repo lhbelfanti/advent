@@ -41,7 +41,7 @@ func main() {
 	fmt.Println("Day 6")
 	var d6 day6.Day6
 	d6.Part1()
-	d6.Part2()
+	//d6.Part2() // Takes too long to run
 
 	fmt.Println("Day 7")
 	var d7 day7.Day7
